@@ -1,11 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Rules>
   <Rule>
-    <Key>A+B</Key>
-    <Value>45000</Value>
+    <Key>3A</Key>
+    <Value>130</Value>
   </Rule>
   <Rule>
-    <Key>A+G</Key>
-    <Value>5000</Value>
+    <Key>2B</Key>
+    <Value>45</Value>
+  </Rule>
+  <Rule>
+    <Key>C+D</Key>
+    <Value>30</Value>
   </Rule>
 </Rules>

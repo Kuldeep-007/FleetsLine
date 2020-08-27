@@ -4,48 +4,48 @@
     <Image>https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRlL-nqq6BSYnftKmr19ni957cYGMjTIJgj_g</Image>
     <Description>Apple Macbook Pro 7</Description>
     <Currency>INR</Currency>
-    <Price>79600</Price>
+    <Price>50</Price>
   </Item>
   <Item>
     <Id>B</Id>
     <Image>https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQDQ2rA3oBjSUtgDMO8e5zXdAC7GTBSMt8_A_hiXLLO7kRTDqu90D-212Yuq2uRU7hXAlwEjWA</Image>
     <Description>Microsoft Surface Pro X</Description>
     <Currency>INR</Currency>
-    <Price>43400</Price>
+    <Price>30</Price>
   </Item>
   <Item>
     <Id>C</Id>
     <Image>https://5.imimg.com/data5/PB/AP/GLADMIN-41326891/samsung-notebook-9-pen-laptop-500x500.png</Image>
     <Description>Samsung Notebook Lite 9</Description>
     <Currency>INR</Currency>
-    <Price>22800</Price>
+    <Price>20</Price>
   </Item>
   <Item>
     <Id>D</Id>
     <Image>https://images.philips.com/is/image/PhilipsConsumer/AC1215_20-IMS-en_IN</Image>
     <Description>Philips Air Purifier 20A</Description>
     <Currency>INR</Currency>
-    <Price>46800</Price>
+    <Price>15</Price>
   </Item>
   <Item>
     <Id>E</Id>
     <Image>https://cdn.shopify.com/s/files/1/1271/2713/products/61FUA-H313L_1024x1024@2x.jpg?v=1579877907</Image>
     <Description>Philips Corded compact epilator</Description>
     <Currency>INR</Currency>
-    <Price>18400</Price>
+    <Price>60</Price>
   </Item>
   <Item>
     <Id>F</Id>
     <Image>https://facilityexecutive.com/wp-content/uploads/2018/03/Schneider.PM8000.jpg</Image>
     <Description>PM8000 Power Meter From Schneider Electric</Description>
     <Currency>INR</Currency>
-    <Price>71200</Price>
+    <Price>30</Price>
   </Item>
   <Item>
     <Id>G</Id>
     <Image>https://cdn.shopify.com/s/files/1/0036/4806/1509/products/m007177135_3cf0c811-53dc-46f7-8c60-7568ee573279_1000x1000@2x.jpg?v=1583341670</Image>
     <Description>Google Home Mini, Charcoal (GA00216-CA)</Description>
     <Currency>INR</Currency>
-    <Price>2280</Price>
+    <Price>10</Price>
   </Item>
 </Inventory>
