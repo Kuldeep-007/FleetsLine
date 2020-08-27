@@ -15,5 +15,6 @@ namespace Fleets.Line.Models
         public string Description { get; set; }
         public string Currency { get; set; }
         public double Price { get; set; }
+        public int Quantity { get; set; }
     }
 }

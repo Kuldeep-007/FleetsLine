@@ -1,8 +1,98 @@
-﻿@model List<Fleets.Line.Models.Inventory>
+﻿@model Fleets.Line.Models.FleetModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/_Layouts/_MasterLayout.cshtml";
 }
+
+<script type="text/javascript">
+        function AddInventoryItem(item) {
+            $.ajax({
+                type: "GET",
+                url: "/Inventory/Add/",
+                data: { inventoryItem: item },
+                async: true
+            })
+           .done(function (response, status, xhr) {
+               try {
+                   alert("Successfully added item " + item + " to the cart.");
+                   window.location.reload();
+               }
+               catch (ex) {
+                   console.log(ex);
+               }
+           })
+           .fail(function (error) {
+               console.log(error);
+           });
+        }
+
+        function AddNewRule() {
+            $.ajax({
+                type: "GET",
+                url: "/Inventory/AddRule/",
+                data: {
+                    key: $("#fl-rule-key").val(),
+                    value: $("#fl-rule-value").val()
+                },
+                async: true
+            })
+           .done(function (response, status, xhr) {
+               try {
+                   alert(response);
+                   window.location.reload();
+               }
+               catch (ex) {
+                   console.log(ex);
+               }
+           })
+           .fail(function (error) {
+               console.log(error);
+           });
+        }
+
+        function DeleteRule(ruleKey) {
+            $.ajax({
+                type: "GET",
+                url: "/Inventory/DeleteRule/",
+                data: {
+                    key: ruleKey
+                },
+                async: true
+            })
+           .done(function (response, status, xhr) {
+               try {
+                   alert(response);
+                   window.location.reload();
+               }
+               catch (ex) {
+                   console.log(ex);
+               }
+           })
+           .fail(function (error) {
+               console.log(error);
+           });
+        }
+
+        function ClearInventoryItem(item) {
+            $.ajax({
+                type: "GET",
+                url: "/Inventory/Delete/",
+                async: true
+            })
+           .done(function (response, status, xhr) {
+               try {
+                   alert("Successfully cleared the cart. Please start adding items.");
+                   window.location.reload();
+               }
+               catch (ex) {
+                   console.log(ex);
+               }
+           })
+           .fail(function (error) {
+               console.log(error);
+           });
+        }
+</script>
 
 <div style="margin-left:15px; margin-right:15px;">
     <ul class="nav nav-tabs">
@@ -26,7 +116,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.Inventory)
                     {
                         <tr>
                             <td>@item.ProductId</td>
@@ -36,7 +126,7 @@
                             <td>@item.Description</td>
                             <td>@item.Currency</td>
                             <td>@item.Price</td>
-                            <td style="cursor:pointer; text-decoration:underline;"><a onclick="AddInventoryItem('@item.ProductId')">Add Item +</a></td>
+                            <td style="cursor:pointer; text-decoration:underline;"><a onclick="AddInventoryItem('@item.ProductId')">Add Item [+]</a></td>
                         </tr>
                     }
                 </tbody>
@@ -44,14 +134,93 @@
         </div>
         <div id="menu1" class="tab-pane fade">
             <p class="fl-tab-head">Add Promotion Rules</p>
+
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Rule Key</th>
+                        <th>Rule Value</th>
+                        <th>Add</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input id="fl-rule-key" class="fl-input" type="text" /></td>
+                        <td><input id="fl-rule-value" class="fl-input" type="text" /></td>
+                        <td style="cursor:pointer; text-decoration:underline;"><a onclick="AddNewRule()">Add a Rule [+]</a></td>
+                    </tr>            
+                </tbody>
+            </table>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Rule Key</th>
+                        <th>Rule Value</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Rules)
+                    {
+                        <tr>
+                            <td><input class="fl-input" type="text" value="@item.Key" disabled/></td>
+                            <td><input class="fl-input" type="text" value="@item.Value" disabled /></td>
+                            <td style="cursor:pointer; text-decoration:underline;"><a onclick="DeleteRule('@item.Key')">Delete Rule [-]</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         </div>
         <div id="menu2" class="tab-pane fade">
-            <h3>Menu 2</h3>
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+            <h3>Cart <span style="cursor:pointer; font-size:14px; color:blue; float: right;
+                margin-right: 20px; font-weight:bold; text-decoration:underline;"><a onclick="ClearInventoryItem()">Clear Cart</a></span></h3>
+            <ul class="list-group col-lg-7">
+                @{
+                    double CartTotalAmount = 0;
+                    var Currency = string.Empty;
+                }
+                @foreach (var item in Model.Cart.AddedInventory)
+                {
+                    var quantity = @item.Quantity + 1;
+                    CartTotalAmount += (item.Price* quantity);
+                    Currency = @item.Currency;
+                    <li class="list-group-item"><span style="font-weight:bold;">@item.ProductId</span> | @item.Description | @item.Currency @item.Price<span class="badge">Quantity: @quantity</span></li>
+                }
+                <li class="list-group-item list-group-item-warning">Amount Total: @Currency @CartTotalAmount</li>
+            </ul>
+
+            <ul class="list-group col-lg-4 col-lg-offset-1">
+                <li class="list-group-item">Promotions Applied</li>
+                @{ 
+                    double CartTotalValue = 0;
+                    string TotalDiscount = string.Empty;
+                }
+                @if (Model.Cart.OperationResult != null)
+                {
+                    foreach (var promotion in Model.Cart.OperationResult)
+                    {
+                        CartTotalValue += promotion.TotalValue;
+
+                        if (promotion.IsPromotion)
+                        {
+                            <li class="list-group-item list-group-item-success">@promotion.Operation = @promotion.TotalValue</li>
+                        }
+                        else
+                        {
+                            <li class="list-group-item">@promotion.Operation = @promotion.TotalValue</li>
+                        }
+                    }
+                    
+                    TotalDiscount = (CartTotalAmount - CartTotalValue).ToString();
+                }
+
+                <li class="list-group-item list-group-item-warning">Amount Total: @Currency @CartTotalAmount</li>
+                <li class="list-group-item">Total Discount: @Currency @TotalDiscount</li>
+                <li class="list-group-item list-group-item-info">Amount Payable: @Currency @CartTotalValue</li>                
+                <li class="list-group-item" style="text-align:right;"><button type="button" class="btn btn-success">Pay Now</button></li>
+            </ul>
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    $(document).ready(function () {
-    });
-</script>

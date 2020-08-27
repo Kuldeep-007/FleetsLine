@@ -14,7 +14,7 @@ namespace Fleets.Line.Helpers
     /// </summary>
     public class Promotions
     {
-        private readonly List<string> _PromotionOperators = new List<string>() { "+" };
+        public readonly List<string> _PromotionOperators = new List<string>() { "+" };
         private IOperations _AddScaleOperations = null;
 
         public Promotions()

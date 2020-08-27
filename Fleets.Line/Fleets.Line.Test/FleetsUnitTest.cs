@@ -18,7 +18,7 @@ namespace Fleets.Line.Test
             { "A+C+B", "50000" }
         };
 
-        private string _InventoryFormula = "2A+9C+B";
+        private string _InventoryFormula = "2A+9C+B+A";
 
         [TestMethod]
         public void CalculatePromotion()

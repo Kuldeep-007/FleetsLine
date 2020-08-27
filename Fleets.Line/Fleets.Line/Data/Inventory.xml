@@ -20,4 +20,32 @@
     <Currency>INR</Currency>
     <Price>22800</Price>
   </Item>
+  <Item>
+    <Id>D</Id>
+    <Image>https://images.philips.com/is/image/PhilipsConsumer/AC1215_20-IMS-en_IN</Image>
+    <Description>Philips Air Purifier 20A</Description>
+    <Currency>INR</Currency>
+    <Price>46800</Price>
+  </Item>
+  <Item>
+    <Id>E</Id>
+    <Image>https://cdn.shopify.com/s/files/1/1271/2713/products/61FUA-H313L_1024x1024@2x.jpg?v=1579877907</Image>
+    <Description>Philips Corded compact epilator</Description>
+    <Currency>INR</Currency>
+    <Price>18400</Price>
+  </Item>
+  <Item>
+    <Id>F</Id>
+    <Image>https://facilityexecutive.com/wp-content/uploads/2018/03/Schneider.PM8000.jpg</Image>
+    <Description>PM8000 Power Meter From Schneider Electric</Description>
+    <Currency>INR</Currency>
+    <Price>71200</Price>
+  </Item>
+  <Item>
+    <Id>G</Id>
+    <Image>https://cdn.shopify.com/s/files/1/0036/4806/1509/products/m007177135_3cf0c811-53dc-46f7-8c60-7568ee573279_1000x1000@2x.jpg?v=1583341670</Image>
+    <Description>Google Home Mini, Charcoal (GA00216-CA)</Description>
+    <Currency>INR</Currency>
+    <Price>2280</Price>
+  </Item>
 </Inventory>

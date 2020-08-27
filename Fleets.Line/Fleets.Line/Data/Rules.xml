@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Rules>
+  <Rule>
+    <Key>A+B</Key>
+    <Value>45000</Value>
+  </Rule>
+  <Rule>
+    <Key>A+G</Key>
+    <Value>5000</Value>
+  </Rule>
+</Rules>

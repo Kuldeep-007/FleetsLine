@@ -12,5 +12,6 @@ namespace Fleets.Line.Models
     {
         public double TotalValue { get; set; }
         public string Operation { get; set; }
+        public bool IsPromotion { get; set; }
     }
 }

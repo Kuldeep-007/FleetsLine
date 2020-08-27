@@ -66,35 +66,39 @@ namespace Fleets.Line.Classes
                 {
                     var PromotionRule = rule.Key;
                     var PromotionScale = ApplyScale(inventory, PromotionRule);
-
-                    List<string> PresentScale = new List<string>();
                     bool IsScaleApplicable = true;
-                    foreach(var scale in PromotionScale)
+
+                    while (IsScaleApplicable)
                     {
-                        if (!inventoryScale.Any(x => x == scale))
+                        List<string> PresentScale = new List<string>();
+                        foreach (var scale in PromotionScale)
                         {
-                            IsScaleApplicable = false;
-                            break;
+                            if (!inventoryScale.Any(x => x == scale))
+                            {
+                                IsScaleApplicable = false;
+                                break;
+                            }
+                            else
+                            {
+                                inventoryScale.Remove(scale);
+                            }
+                            PresentScale.Add(scale);
+                        }
+
+                        if (IsScaleApplicable)
+                        {
+                            OperationResult.Add(new Models.OperationResult()
+                            {
+                                TotalValue = rule.Value,
+                                Operation = rule.Key,
+                                IsPromotion = true
+                            });
                         }
                         else
                         {
-                            inventoryScale.Remove(scale);                            
+                            //If scale not applicable then put it back on inventory list
+                            inventoryScale.AddRange(PresentScale);
                         }
-                        PresentScale.Add(scale);
-                    }
-
-                    if (IsScaleApplicable)
-                    {
-                        OperationResult.Add(new Models.OperationResult()
-                        {
-                            TotalValue = rule.Value,
-                            Operation = rule.Key
-                        });
-                    }
-                    else
-                    {
-                        //If scale not applicable then put it back on inventory list
-                        inventoryScale.AddRange(PresentScale);
                     }
                 }
 
@@ -103,8 +107,9 @@ namespace Fleets.Line.Classes
                 {
                     OperationResult.Add(new Models.OperationResult()
                     {
-                        TotalValue = inventory.Where(x=>x.ProductId == item).First().Price,
-                        Operation = null
+                        TotalValue = inventory.Where(x => x.ProductId == item).First().Price,
+                        Operation = item,
+                        IsPromotion = false
                     });
                 }
             }

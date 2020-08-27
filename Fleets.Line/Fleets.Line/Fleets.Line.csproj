@@ -122,6 +122,7 @@
     <EmbeddedResource Include="Data\Inventory.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <Content Include="Data\Rules.xml" />
     <Content Include="Global.asax" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
@@ -140,8 +141,11 @@
     <Compile Include="Helpers\SessionInformation.cs" />
     <Compile Include="Helpers\StringHelpers.cs" />
     <Compile Include="Interfaces\IOperations.cs" />
+    <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\FleetModel.cs" />
     <Compile Include="Models\Inventory.cs" />
     <Compile Include="Models\OperationResult.cs" />
+    <Compile Include="Models\Rules.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
