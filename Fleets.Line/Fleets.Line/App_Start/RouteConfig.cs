@@ -18,6 +18,12 @@ namespace Fleets.Line
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "Inventory",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Inventory", action = "Add", id = UrlParameter.Optional }
+            );
         }
     }
 }

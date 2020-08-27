@@ -1,4 +1,5 @@
-﻿using Fleets.Line.Models;
+﻿using Fleets.Line.Helpers;
+using Fleets.Line.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,17 @@ namespace Fleets.Line.Controllers
             var Inventory = Fleets.Line.Helpers.Inventory.GetInventory(XMLDocument);
 
             return View(Inventory);
+        }
+
+        public ActionResult AddInventoryItem(string item)
+        {
+
+            var d = Request.Cookies["InventoryItems"];
+
+            HttpCookie SessionId = SessionInformation.CreateCookie("ConfiguratorSessionId", "");
+            Response.Cookies.Add(SessionId);
+
+            return View("Index");
         }
     }
 }
