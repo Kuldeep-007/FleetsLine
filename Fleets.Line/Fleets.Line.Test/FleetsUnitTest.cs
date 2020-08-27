@@ -8,26 +8,30 @@ namespace Fleets.Line.Test
     [TestClass]
     public class FleetsUnitTest
     {
+        private Promotions _Promotions = null;
         /// <summary>
         /// Mocking the _PromotionRules
         /// </summary>
-        private Dictionary<string, double> _PromotionRules = new Dictionary<string, double>()
+        private Dictionary<string, string> _PromotionRules = new Dictionary<string, string>()
         {
-            { "A+C", 50000 }
+            { "A+8C", "50000" },
+            { "A+C+B", "50000" }
         };
 
-        private string _PromotionFormula = "A+9C";
+        private string _InventoryFormula = "2A+9C+B";
 
         [TestMethod]
         public void CalculatePromotion()
         {
-            Promotions.Calculate(_PromotionFormula);
+            _Promotions = new Promotions();
+            _Promotions.Calculate(_InventoryFormula, _PromotionRules);
         }
 
         [TestMethod]
         public void CheckFormula()
         {
-            Assert.IsTrue(Promotions.CheckPromotionFormula(_PromotionFormula));
+            _Promotions = new Promotions();
+            Assert.IsTrue(_Promotions.CheckPromotionFormula(_InventoryFormula));
         }     
     }
 }
