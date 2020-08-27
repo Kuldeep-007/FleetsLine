@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Inventory>
+  <Item>
+    <Id>A</Id>
+    <Image>https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRlL-nqq6BSYnftKmr19ni957cYGMjTIJgj_g&usqp=CAU</Image>
+    <Description>Apple Macbook Pro 7</Description>
+    <Price>79600</Price>
+  </Item>
+  <Item>
+    <Id>B</Id>
+    <Image>https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQDQ2rA3oBjSUtgDMO8e5zXdAC7GTBSMt8_A_hiXLLO7kRTDqu90D-212Yuq2uRU7hXAlwEjWA&usqp=CAc</Image>
+    <Description>Microsoft Surface Pro X</Description>
+    <Price>43400</Price>
+  </Item>
+  <Item>
+    <Id>C</Id>
+    <Image>https://5.imimg.com/data5/PB/AP/GLADMIN-41326891/samsung-notebook-9-pen-laptop-500x500.png</Image>
+    <Description>Samsung Notebook Lite 9</Description>
+    <Price>22800</Price>
+  </Item>
+</Inventory>
